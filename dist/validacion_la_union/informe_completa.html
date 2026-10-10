@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='utf-8'>
+<title>Cuencas de alcantarillas</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:24px auto;max-width:1200px;color:#1f2933;line-height:1.45;padding:0 16px}
+h1{font-size:24px;margin-bottom:4px}h2{font-size:18px;margin-top:28px;border-bottom:2px solid #d9e2ec;padding-bottom:4px}
+h3{font-size:15px;margin-top:18px}
+.sub{color:#52606d;margin-top:0}
+table{border-collapse:collapse;width:100%;margin:8px 0 16px;font-size:12.5px}
+th,td{border:1px solid #d9e2ec;padding:3px 5px;text-align:right}th{background:#f0f4f8;text-align:center}
+td.t{text-align:left}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.kpi{border:1px solid #d9e2ec;border-radius:6px;padding:10px 14px;min-width:160px;flex:1}
+.kpi b{display:block;font-size:22px;color:#102a43}.kpi span{font-size:12px;color:#52606d}
+.aviso{background:#fff8e1;border-left:4px solid #f0b429;padding:8px 12px;margin:10px 0}
+.malo{background:#fdecea;border-left:4px solid #d64545;padding:8px 12px;margin:10px 0}
+.ok{background:#e3f9e5;border-left:4px solid #3ebd93;padding:8px 12px;margin:10px 0}
+.cita{background:#f0f4f8;padding:12px;border-radius:6px;font-size:14px}
+.fuera{color:#b54708}
+small{color:#52606d}
+</style></head><body>
+<h1>Cuencas de aporte de alcantarillas – informe de cálculo</h1>
+<p class='sub'>Generado el 10/10/2026 03:52 con el complemento QGIS «Exutorios Viales». Resultado referencial para estudios a nivel de perfil.</p>
+<h2>1. Resumen</h2>
+<div class='kpis'>
+<div class='kpi'><b>18</b><span>Salidas analizadas (cruces + puntos)</span></div>
+<div class='kpi'><b>0.563 km²</b><span>Cuenca mayor (salida 9, 2+140)</span></div>
+<div class='kpi'><b>5.65 m³/s</b><span>Caudal máximo Tr 71 años (salida 9, cuenca natural)</span></div>
+<div class='kpi'><b>0</b><span>Cuencas que tocan el borde del DEM</span></div>
+</div>
+<div class='aviso'>Salida 2 (0+302): 21.7 % del área está en depresiones cerradas (2, 7344 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 4 (0+839): 12.5 % del área está en depresiones cerradas (1, 156 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 5 (1+109): 27.8 % del área está en depresiones cerradas (6, 179375 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 7 (1+683): 5.2 % del área está en depresiones cerradas (1, 1094 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 8 (2+087): 15.1 % del área está en depresiones cerradas (1, 7188 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 9 (2+140): 17.7 % del área está en depresiones cerradas (8, 123438 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 12 (2+960): 24.7 % del área está en depresiones cerradas (1, 47969 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 13 (3+160): 27.5 % del área está en depresiones cerradas (2, 10625 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 14 (3+494): 37.3 % del área está en depresiones cerradas (1, 2969 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 15 (3+649): 42.5 % del área está en depresiones cerradas (1, 36406 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 16 (3+748): 37.0 % del área está en depresiones cerradas (2, 67344 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 17 (3+915): 34.8 % del área está en depresiones cerradas (1, 26094 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 18 (4+066): 24.0 % del área está en depresiones cerradas (1, 9531 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<h2>2. Datos de entrada</h2><table>
+<tr><td class='t'><b>DEM</b></td><td class='t'>dem_grass_area_estudio</td></tr>
+<tr><td class='t'><b>Preparación automática del DEM</b></td><td class='t'>ninguna (se usó tal cual)</td></tr>
+<tr><td class='t'><b>Celda / filas × columnas</b></td><td class='t'>12.50 m / 1569 × 1637</td></tr>
+<tr><td class='t'><b>Sistema de coordenadas</b></td><td class='t'>EPSG:32717</td></tr>
+<tr><td class='t'><b>Cotas</b></td><td class='t'>enteras (resolución vertical 1 m)</td></tr>
+<tr><td class='t'><b>Eje de la vía</b></td><td class='t'>eje_via.gpkg (1 parte(s), 4276 m)</td></tr>
+<tr><td class='t'><b>Alcantarillas dadas</b></td><td class='t'>17 puntos</td></tr>
+<tr><td class='t'><b>Modo de salidas</b></td><td class='t'>Ambos sin duplicar (recomendado)</td></tr>
+<tr><td class='t'><b>Umbral de cauce</b></td><td class='t'>10.94 ha = 700 celdas</td></tr>
+<tr><td class='t'><b>Tratamiento de depresiones</b></td><td class='t'>Rellenar (Priority-Flood, recomendado en terreno plano)</td></tr>
+<tr><td class='t'><b>Vía como barrera</b></td><td class='t'>no</td></tr>
+<tr><td class='t'><b>Ajuste de puntos / fusión / agrupación de cortes</b></td><td class='t'>25 m / 30 m / 40 m</td></tr>
+<tr><td class='t'><b>Lluvia máxima diaria</b></td><td class='t'>Tr 25: 58.5 mm; Tr 35: 70.6 mm; Tr 71: 101.7 mm</td></tr>
+<tr><td class='t'><b>Lluvia de 24 h</b></td><td class='t'>diaria × 1.13</td></tr>
+<tr><td class='t'><b>Intensidad</b></td><td class='t'>Dyck-Peschke a partir de la lluvia de 24 h (sin IDF)</td></tr>
+<tr><td class='t'><b>Uso del suelo (CN)</b></td><td class='t'>Cultivos en hileras, surcos rectos, condición buena</td></tr>
+<tr><td class='t'><b>Suelos</b></td><td class='t'>grupo C por defecto</td></tr>
+<tr><td class='t'><b>Condición de humedad</b></td><td class='t'>AMC II</td></tr>
+<tr><td class='t'><b>Tc mínimo / criterio</b></td><td class='t'>10 min / media_validas</td></tr>
+<tr><td class='t'><b>Caudal adoptado</b></td><td class='t'>racional modificado de Témez</td></tr>
+</table>
+<h2>3. Método</h2><ol>
+<li>Acondicionamiento del DEM: relleno de depresiones con Priority-Flood (Barnes et al., 2014); zonas planas resueltas con el gradiente superpuesto de Barnes, Lehman y Mulla (2014). Verificación: 0 celdas sin salida.</li>
+<li>Direcciones D8 de máxima pendiente (O&#x27;Callaghan y Mark, 1984) y acumulación de flujo; red de cauces con umbral de 10.94 ha (700 celdas), segmentos de confluencia a confluencia con orden de Strahler (1953 segmentos).</li>
+<li>Salidas: Ambos sin duplicar (recomendado). Los cruces se obtienen por intersección geométrica exacta de cada segmento de cauce con el eje; los puntos dados se ajustan a la celda de mayor acumulación en 25 m. Progresivas medidas sobre el eje concatenando sus partes.</li>
+<li>Cuenca de cada salida: todas las celdas cuyo camino D8 pasa por ella (incluye las cuencas anidadas aguas arriba). Polígono sin islas. L = máxima distancia de flujo hasta la salida (pasos diagonales √2·celda).</li>
+<li>Parámetros: A, P (del polígono ráster), L, Hmáx, Hmín en la salida, ΔH, S = ΔH/L, pendiente 10–85 del recorrido, pendiente media de la cuenca (Horn), cota media, Kc = 0.28·P/√A, Kf = A/L², depresiones cerradas (relleno − terreno) y contacto con el borde del DEM.</li>
+<li>Tc: Kirpich (1940), Témez (1978), California Culverts Practice (1942), Bransby-Williams (1922) y retardo SCS (NRCS NEH-630 cap. 15), con sus rangos de calibración; Tc mínimo 10 min; adoptado: media_validas.</li>
+<li>CN de la tabla TR-55 (USDA-NRCS, 1986) por uso y grupo hidrológico, compuesto por área; condición AMC II (Chow et al., 1988).</li>
+<li>Lluvia de 24 h = diaria × 1.13 (Hershfield, 1961). Intensidad: Dyck-Peschke, P_d = P24·(d/1440)^0.25.</li>
+<li>Caudal: racional Q = C·I·A/3.6 y racional modificado de Témez Q = C·I·A·K/3.6 con C = (Pd−Po)(Pd+23Po)/(Pd+11Po)², Po = 5080/CN − 50.8 y K = 1 + Tc^1.25/(Tc^1.25+14) (Témez, 1991).</li>
+</ol>
+<h2>4. Salidas (exutorios)</h2>
+<table><tr><th>Id</th><th>Progresiva</th><th>Origen</th><th>Desplazamiento (m)</th><th>Área drenada (ha)</th><th>Cota (msnm)</th><th>Anidada en</th><th>Contiene</th></tr>
+<tr><td>1</td><td>0+067</td><td class='t'>punto</td><td>23.1</td><td>1.7</td><td>24.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>2</td><td>0+302</td><td class='t'>punto</td><td>24.7</td><td>2.0</td><td>23.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>3</td><td>0+709</td><td class='t'>punto</td><td>19.5</td><td>1.0</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>4</td><td>0+839</td><td class='t'>punto</td><td>23.6</td><td>0.1</td><td>24.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>5</td><td>1+109</td><td class='t'>punto+cruce</td><td>22.8</td><td>33.1</td><td>22.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>6</td><td>1+491</td><td class='t'>punto</td><td>22.3</td><td>5.0</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>7</td><td>1+683</td><td class='t'>punto</td><td>13.7</td><td>2.1</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>8</td><td>2+087</td><td class='t'>punto</td><td>21.2</td><td>2.5</td><td>23.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>9</td><td>2+140</td><td class='t'>cruce</td><td>0.0</td><td>56.3</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>10</td><td>2+311</td><td class='t'>punto</td><td>14.1</td><td>0.1</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>11</td><td>2+505</td><td class='t'>punto</td><td>16.9</td><td>1.5</td><td>25.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>12</td><td>2+960</td><td class='t'>punto+cruce</td><td>20.0</td><td>13.6</td><td>26.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>13</td><td>3+160</td><td class='t'>punto</td><td>17.3</td><td>3.2</td><td>23.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>14</td><td>3+494</td><td class='t'>punto</td><td>20.3</td><td>0.8</td><td>26.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>15</td><td>3+649</td><td class='t'>punto</td><td>16.1</td><td>5.0</td><td>24.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>16</td><td>3+748</td><td class='t'>punto</td><td>14.4</td><td>10.4</td><td>26.00</td><td>-</td><td class='t'>17, 18</td></tr>
+<tr><td>17</td><td>3+915</td><td class='t'>punto</td><td>14.5</td><td>5.0</td><td>24.00</td><td>16</td><td class='t'>18</td></tr>
+<tr><td>18</td><td>4+066</td><td class='t'>punto</td><td>19.4</td><td>2.0</td><td>24.00</td><td>17</td><td class='t'>-</td></tr>
+</table>
+<h2>5. Parámetros geomorfológicos</h2>
+<table><tr><th>Id</th><th>A (km²)</th><th>P (km)</th><th>L (m)</th><th>Hmáx</th><th>Hmín</th><th>ΔH (m)</th><th>S = ΔH/L</th><th>S 10–85</th><th>S cuenca</th><th>H media</th><th>Kc</th><th>Kf</th><th>Depresiones</th><th>Vol. dep. (m³)</th><th>% área dep.</th><th>Borde</th></tr>
+<tr><td>1</td><td>0.0173</td><td>0.700</td><td>259</td><td>27.00</td><td>24.00</td><td>3.00</td><td>0.0116</td><td>0.0103</td><td>0.0374</td><td>25.08</td><td>1.49</td><td>0.258</td><td>0</td><td>0</td><td>0.0</td><td>No</td></tr>
+<tr><td>2</td><td>0.0202</td><td>0.825</td><td>422</td><td>29.00</td><td>23.00</td><td>6.00</td><td>0.0142</td><td>-0.0074</td><td>0.0446</td><td>26.14</td><td>1.63</td><td>0.113</td><td>2</td><td>7 344</td><td>21.7</td><td>No</td></tr>
+<tr><td>3</td><td>0.0105</td><td>0.575</td><td>176</td><td>32.00</td><td>25.00</td><td>7.00</td><td>0.0398</td><td>0.0387</td><td>0.0520</td><td>27.55</td><td>1.57</td><td>0.338</td><td>0</td><td>0</td><td>0.0</td><td>No</td></tr>
+<tr><td>4</td><td>0.0013</td><td>0.200</td><td>68</td><td>28.00</td><td>24.00</td><td>4.00</td><td>0.0591</td><td>0.0521</td><td>0.0554</td><td>26.25</td><td>1.58</td><td>0.273</td><td>1</td><td>156</td><td>12.5</td><td>No</td></tr>
+<tr><td>5</td><td>0.3309</td><td>3.575</td><td>1 219</td><td>35.00</td><td>22.00</td><td>13.00</td><td>0.0107</td><td>0.0085</td><td>0.0589</td><td>27.29</td><td>1.74</td><td>0.223</td><td>6</td><td>179 375</td><td>27.8</td><td>No</td></tr>
+<tr><td>6</td><td>0.0497</td><td>1.100</td><td>314</td><td>33.00</td><td>25.00</td><td>8.00</td><td>0.0255</td><td>0.0129</td><td>0.0481</td><td>27.92</td><td>1.38</td><td>0.503</td><td>2</td><td>1 406</td><td>2.8</td><td>No</td></tr>
+<tr><td>7</td><td>0.0211</td><td>0.875</td><td>281</td><td>35.00</td><td>25.00</td><td>10.00</td><td>0.0356</td><td>0.0456</td><td>0.0634</td><td>30.63</td><td>1.69</td><td>0.267</td><td>1</td><td>1 094</td><td>5.2</td><td>No</td></tr>
+<tr><td>8</td><td>0.0248</td><td>1.025</td><td>377</td><td>35.00</td><td>23.00</td><td>12.00</td><td>0.0318</td><td>0.0372</td><td>0.0460</td><td>27.86</td><td>1.82</td><td>0.175</td><td>1</td><td>7 188</td><td>15.1</td><td>No</td></tr>
+<tr><td>9</td><td>0.5627</td><td>5.075</td><td>1 914</td><td>37.00</td><td>25.00</td><td>12.00</td><td>0.0063</td><td>0.0009</td><td>0.0457</td><td>27.46</td><td>1.89</td><td>0.154</td><td>8</td><td>123 438</td><td>17.7</td><td>No</td></tr>
+<tr><td>10</td><td>0.0009</td><td>0.200</td><td>53</td><td>27.00</td><td>25.00</td><td>2.00</td><td>0.0377</td><td>0.0503</td><td>0.0413</td><td>26.00</td><td>1.83</td><td>0.333</td><td>0</td><td>0</td><td>0.0</td><td>No</td></tr>
+<tr><td>11</td><td>0.0152</td><td>0.725</td><td>266</td><td>30.00</td><td>25.00</td><td>5.00</td><td>0.0188</td><td>0.0090</td><td>0.0438</td><td>26.49</td><td>1.65</td><td>0.214</td><td>1</td><td>469</td><td>3.1</td><td>No</td></tr>
+<tr><td>12</td><td>0.1363</td><td>2.350</td><td>782</td><td>31.00</td><td>26.00</td><td>5.00</td><td>0.0064</td><td>0.0034</td><td>0.0321</td><td>26.43</td><td>1.78</td><td>0.223</td><td>1</td><td>47 969</td><td>24.7</td><td>No</td></tr>
+<tr><td>13</td><td>0.0319</td><td>0.975</td><td>377</td><td>30.00</td><td>23.00</td><td>7.00</td><td>0.0186</td><td>0.0043</td><td>0.0411</td><td>26.35</td><td>1.53</td><td>0.225</td><td>2</td><td>10 625</td><td>27.5</td><td>No</td></tr>
+<tr><td>14</td><td>0.0080</td><td>0.475</td><td>153</td><td>29.00</td><td>26.00</td><td>3.00</td><td>0.0196</td><td>0.0157</td><td>0.0440</td><td>26.14</td><td>1.49</td><td>0.340</td><td>1</td><td>2 969</td><td>37.3</td><td>No</td></tr>
+<tr><td>15</td><td>0.0503</td><td>1.175</td><td>467</td><td>29.00</td><td>24.00</td><td>5.00</td><td>0.0107</td><td>0.0029</td><td>0.0565</td><td>26.03</td><td>1.47</td><td>0.230</td><td>1</td><td>36 406</td><td>42.5</td><td>No</td></tr>
+<tr><td>16</td><td>0.1039</td><td>1.675</td><td>645</td><td>36.00</td><td>26.00</td><td>10.00</td><td>0.0155</td><td>0.0010</td><td>0.0555</td><td>26.57</td><td>1.45</td><td>0.249</td><td>2</td><td>67 344</td><td>37.0</td><td>No</td></tr>
+<tr><td>17</td><td>0.0503</td><td>1.150</td><td>364</td><td>36.00</td><td>24.00</td><td>12.00</td><td>0.0329</td><td>0.0219</td><td>0.0598</td><td>26.99</td><td>1.44</td><td>0.379</td><td>1</td><td>26 094</td><td>34.8</td><td>No</td></tr>
+<tr><td>18</td><td>0.0195</td><td>0.700</td><td>181</td><td>36.00</td><td>24.00</td><td>12.00</td><td>0.0663</td><td>0.0792</td><td>0.0879</td><td>28.50</td><td>1.40</td><td>0.596</td><td>1</td><td>9 531</td><td>24.0</td><td>No</td></tr>
+</table>
+<h2>6. Tiempo de concentración (min)</h2>
+<table><tr><th>Id</th><th>Kirpich</th><th>Témez</th><th>California Culverts Practice</th><th>Bransby-Williams</th><th>Retardo SCS</th><th>Adoptado</th><th>Criterio</th></tr>
+<tr><td>1</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>7.8*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>15.0*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>7.8*</span></td>
+<td>13.8</td>
+<td>12.2</td>
+<td><b>13.0</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>2</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>10.5*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>20.9*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>10.5*</span></td>
+<td>21.3</td>
+<td>16.5</td>
+<td><b>18.9</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>3</td>
+<td>3.6</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>8.9*</span></td>
+<td>3.6</td>
+<td>7.7</td>
+<td>7.6</td>
+<td><b>10.0</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+<tr><td>4</td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha'>1.5*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>4.0*</span></td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha (igual que Kirpich)'>1.5*</span></td>
+<td>3.4</td>
+<td>3.4</td>
+<td><b>10.0</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>5</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>26.6*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>49.6*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>26.6*</span></td>
+<td>49.3</td>
+<td>33.6</td>
+<td><b>41.5</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>6</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>6.7*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>15.0*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>6.7*</span></td>
+<td>12.9</td>
+<td>12.6</td>
+<td><b>12.7</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>7</td>
+<td>5.4</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>12.9*</span></td>
+<td>5.4</td>
+<td>11.8</td>
+<td>10.0</td>
+<td><b>10.4</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+<tr><td>8</td>
+<td>7.1</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>16.5*</span></td>
+<td>7.1</td>
+<td>15.9</td>
+<td>14.9</td>
+<td><b>12.7</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+<tr><td>9</td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha; pendiente fuera de 3–10 %'>46.3*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>77.3*</span></td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha (igual que Kirpich); pendiente fuera de 3–10 % (igual que Kirpich)'>46.3*</span></td>
+<td>81.6</td>
+<td>54.8</td>
+<td><b>68.2</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>10</td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha'>1.5*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>3.6*</span></td>
+<td><span class='fuera' title='área fuera de 0.5–45 ha (igual que Kirpich)'>1.5*</span></td>
+<td>3.0</td>
+<td>3.3</td>
+<td><b>10.0</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>11</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>6.6*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>14.0*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>6.6*</span></td>
+<td>13.1</td>
+<td>11.6</td>
+<td><b>12.3</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>12</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>23.0*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>39.0*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>23.0*</span></td>
+<td>38.3</td>
+<td>31.9</td>
+<td><b>35.1</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>13</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>8.7*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>18.3*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>8.7*</span></td>
+<td>17.2</td>
+<td>15.7</td>
+<td><b>16.5</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>14</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>4.3*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>9.1*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>4.3*</span></td>
+<td>8.0</td>
+<td>7.4</td>
+<td><b>10.0</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>15</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>12.7*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>23.9*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>12.7*</span></td>
+<td>22.8</td>
+<td>16.0</td>
+<td><b>19.4</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>16</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>14.1*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>28.5*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>14.1*</span></td>
+<td>27.2</td>
+<td>20.8</td>
+<td><b>24.0</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>17</td>
+<td>6.8</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>16.0*</span></td>
+<td>6.8</td>
+<td>14.2</td>
+<td>12.7</td>
+<td><b>11.7</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+<tr><td>18</td>
+<td>3.0</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>8.2*</span></td>
+<td>3.0</td>
+<td>6.7</td>
+<td>6.0</td>
+<td><b>10.0</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+</table>
+<p><small>* Fuera del rango de calibración de la fórmula (pasa el ratón para ver el motivo). Tc mínimo aplicado: 10 min.</small></p>
+<h2>7. Lluvia, escorrentía y caudal de diseño</h2>
+<p>Lluvia máxima diaria por periodo de retorno (Log-Pearson III): Tr 25 años: 58.5 mm; Tr 35 años: 70.6 mm; Tr 71 años: 101.7 mm. Lluvia de 24 h = diaria × 1.13.</p>
+<p>Intensidad para una duración igual al Tc adoptado: Dyck-Peschke, I = P24·(Tc/1440)^0.25 / (Tc/60).</p>
+<p>C de Témez con Po = 5080/CN − 50.8 (equivalente a Ia = 0.2·S); K = 1 + Tc^1.25/(Tc^1.25+14). Caudal adoptado: racional modificado de Témez.</p>
+<p></p>
+<table><tr><th>Id</th><th>A (km²)</th><th>Tc (min)</th><th>CN</th><th>Tr (años)</th><th>Pd (mm)</th><th>P24 (mm)</th><th>I (mm/h)</th><th>C Témez</th><th>Q racional (m³/s)</th><th>K</th><th>Q Témez (m³/s)</th><th>Q adoptado</th></tr>
+<tr><td>1</td><td>0.0173</td><td>13.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>93.8</td><td>0.531</td><td>0.240</td><td>1.010</td><td>0.243</td><td><b>0.243</b></td></tr>
+<tr><td>1</td><td>0.0173</td><td>13.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>113.2</td><td>0.596</td><td>0.325</td><td>1.010</td><td>0.328</td><td><b>0.328</b></td></tr>
+<tr><td>1</td><td>0.0173</td><td>13.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>163.1</td><td>0.712</td><td>0.559</td><td>1.010</td><td>0.565</td><td><b>0.565</b></td></tr>
+<tr><td>2</td><td>0.0202</td><td>18.9</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>71.0</td><td>0.531</td><td>0.211</td><td>1.017</td><td>0.215</td><td><b>0.215</b></td></tr>
+<tr><td>2</td><td>0.0202</td><td>18.9</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>85.7</td><td>0.596</td><td>0.286</td><td>1.017</td><td>0.291</td><td><b>0.291</b></td></tr>
+<tr><td>2</td><td>0.0202</td><td>18.9</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>123.4</td><td>0.712</td><td>0.492</td><td>1.017</td><td>0.500</td><td><b>0.500</b></td></tr>
+<tr><td>3</td><td>0.0105</td><td>10.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>114.5</td><td>0.531</td><td>0.177</td><td>1.008</td><td>0.178</td><td><b>0.178</b></td></tr>
+<tr><td>3</td><td>0.0105</td><td>10.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>138.2</td><td>0.596</td><td>0.239</td><td>1.008</td><td>0.241</td><td><b>0.241</b></td></tr>
+<tr><td>3</td><td>0.0105</td><td>10.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>199.0</td><td>0.712</td><td>0.412</td><td>1.008</td><td>0.415</td><td><b>0.415</b></td></tr>
+<tr><td>4</td><td>0.0013</td><td>10.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>114.5</td><td>0.531</td><td>0.021</td><td>1.008</td><td>0.021</td><td><b>0.021</b></td></tr>
+<tr><td>4</td><td>0.0013</td><td>10.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>138.2</td><td>0.596</td><td>0.029</td><td>1.008</td><td>0.029</td><td><b>0.029</b></td></tr>
+<tr><td>4</td><td>0.0013</td><td>10.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>199.0</td><td>0.712</td><td>0.049</td><td>1.008</td><td>0.050</td><td><b>0.050</b></td></tr>
+<tr><td>5</td><td>0.3309</td><td>41.5</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>39.4</td><td>0.531</td><td>1.924</td><td>1.043</td><td>2.007</td><td><b>2.007</b></td></tr>
+<tr><td>5</td><td>0.3309</td><td>41.5</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>47.5</td><td>0.596</td><td>2.604</td><td>1.043</td><td>2.717</td><td><b>2.717</b></td></tr>
+<tr><td>5</td><td>0.3309</td><td>41.5</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>68.5</td><td>0.712</td><td>4.481</td><td>1.043</td><td>4.674</td><td><b>4.674</b></td></tr>
+<tr><td>6</td><td>0.0497</td><td>12.7</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>95.4</td><td>0.531</td><td>0.700</td><td>1.010</td><td>0.707</td><td><b>0.707</b></td></tr>
+<tr><td>6</td><td>0.0497</td><td>12.7</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>115.2</td><td>0.596</td><td>0.947</td><td>1.010</td><td>0.957</td><td><b>0.957</b></td></tr>
+<tr><td>6</td><td>0.0497</td><td>12.7</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>165.9</td><td>0.712</td><td>1.629</td><td>1.010</td><td>1.646</td><td><b>1.646</b></td></tr>
+<tr><td>7</td><td>0.0211</td><td>10.4</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>110.8</td><td>0.531</td><td>0.345</td><td>1.008</td><td>0.348</td><td><b>0.348</b></td></tr>
+<tr><td>7</td><td>0.0211</td><td>10.4</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>133.7</td><td>0.596</td><td>0.467</td><td>1.008</td><td>0.471</td><td><b>0.471</b></td></tr>
+<tr><td>7</td><td>0.0211</td><td>10.4</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>192.6</td><td>0.712</td><td>0.803</td><td>1.008</td><td>0.809</td><td><b>0.809</b></td></tr>
+<tr><td>8</td><td>0.0248</td><td>12.7</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>95.8</td><td>0.531</td><td>0.351</td><td>1.010</td><td>0.355</td><td><b>0.355</b></td></tr>
+<tr><td>8</td><td>0.0248</td><td>12.7</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>115.6</td><td>0.596</td><td>0.475</td><td>1.010</td><td>0.480</td><td><b>0.480</b></td></tr>
+<tr><td>8</td><td>0.0248</td><td>12.7</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>166.5</td><td>0.712</td><td>0.818</td><td>1.010</td><td>0.826</td><td><b>0.826</b></td></tr>
+<tr><td>9</td><td>0.5627</td><td>68.2</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>27.1</td><td>0.531</td><td>2.252</td><td>1.077</td><td>2.426</td><td><b>2.426</b></td></tr>
+<tr><td>9</td><td>0.5627</td><td>68.2</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>32.7</td><td>0.596</td><td>3.048</td><td>1.077</td><td>3.284</td><td><b>3.284</b></td></tr>
+<tr><td>9</td><td>0.5627</td><td>68.2</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>47.2</td><td>0.712</td><td>5.244</td><td>1.077</td><td>5.650</td><td><b>5.650</b></td></tr>
+<tr><td>10</td><td>0.0009</td><td>10.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>114.5</td><td>0.531</td><td>0.016</td><td>1.008</td><td>0.016</td><td><b>0.016</b></td></tr>
+<tr><td>10</td><td>0.0009</td><td>10.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>138.2</td><td>0.596</td><td>0.021</td><td>1.008</td><td>0.022</td><td><b>0.022</b></td></tr>
+<tr><td>10</td><td>0.0009</td><td>10.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>199.0</td><td>0.712</td><td>0.037</td><td>1.008</td><td>0.037</td><td><b>0.037</b></td></tr>
+<tr><td>11</td><td>0.0152</td><td>12.3</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>97.9</td><td>0.531</td><td>0.219</td><td>1.010</td><td>0.221</td><td><b>0.221</b></td></tr>
+<tr><td>11</td><td>0.0152</td><td>12.3</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>118.1</td><td>0.596</td><td>0.296</td><td>1.010</td><td>0.299</td><td><b>0.299</b></td></tr>
+<tr><td>11</td><td>0.0152</td><td>12.3</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>170.2</td><td>0.712</td><td>0.510</td><td>1.010</td><td>0.515</td><td><b>0.515</b></td></tr>
+<tr><td>12</td><td>0.1363</td><td>35.1</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>44.7</td><td>0.531</td><td>0.898</td><td>1.035</td><td>0.929</td><td><b>0.929</b></td></tr>
+<tr><td>12</td><td>0.1363</td><td>35.1</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>53.9</td><td>0.596</td><td>1.215</td><td>1.035</td><td>1.258</td><td><b>1.258</b></td></tr>
+<tr><td>12</td><td>0.1363</td><td>35.1</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>77.6</td><td>0.712</td><td>2.091</td><td>1.035</td><td>2.164</td><td><b>2.164</b></td></tr>
+<tr><td>13</td><td>0.0319</td><td>16.5</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>78.7</td><td>0.531</td><td>0.370</td><td>1.014</td><td>0.375</td><td><b>0.375</b></td></tr>
+<tr><td>13</td><td>0.0319</td><td>16.5</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>95.0</td><td>0.596</td><td>0.501</td><td>1.014</td><td>0.508</td><td><b>0.508</b></td></tr>
+<tr><td>13</td><td>0.0319</td><td>16.5</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>136.8</td><td>0.712</td><td>0.862</td><td>1.014</td><td>0.874</td><td><b>0.874</b></td></tr>
+<tr><td>14</td><td>0.0080</td><td>10.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>114.5</td><td>0.531</td><td>0.135</td><td>1.008</td><td>0.136</td><td><b>0.136</b></td></tr>
+<tr><td>14</td><td>0.0080</td><td>10.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>138.2</td><td>0.596</td><td>0.182</td><td>1.008</td><td>0.184</td><td><b>0.184</b></td></tr>
+<tr><td>14</td><td>0.0080</td><td>10.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>199.0</td><td>0.712</td><td>0.314</td><td>1.008</td><td>0.316</td><td><b>0.316</b></td></tr>
+<tr><td>15</td><td>0.0503</td><td>19.4</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>69.7</td><td>0.531</td><td>0.517</td><td>1.017</td><td>0.526</td><td><b>0.526</b></td></tr>
+<tr><td>15</td><td>0.0503</td><td>19.4</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>84.1</td><td>0.596</td><td>0.701</td><td>1.017</td><td>0.713</td><td><b>0.713</b></td></tr>
+<tr><td>15</td><td>0.0503</td><td>19.4</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>121.2</td><td>0.712</td><td>1.205</td><td>1.017</td><td>1.226</td><td><b>1.226</b></td></tr>
+<tr><td>16</td><td>0.1039</td><td>24.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>59.4</td><td>0.531</td><td>0.910</td><td>1.022</td><td>0.930</td><td><b>0.930</b></td></tr>
+<tr><td>16</td><td>0.1039</td><td>24.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>71.6</td><td>0.596</td><td>1.232</td><td>1.022</td><td>1.259</td><td><b>1.259</b></td></tr>
+<tr><td>16</td><td>0.1039</td><td>24.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>103.2</td><td>0.712</td><td>2.119</td><td>1.022</td><td>2.166</td><td><b>2.166</b></td></tr>
+<tr><td>17</td><td>0.0503</td><td>11.7</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>101.6</td><td>0.531</td><td>0.754</td><td>1.009</td><td>0.761</td><td><b>0.761</b></td></tr>
+<tr><td>17</td><td>0.0503</td><td>11.7</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>122.6</td><td>0.596</td><td>1.021</td><td>1.009</td><td>1.031</td><td><b>1.031</b></td></tr>
+<tr><td>17</td><td>0.0503</td><td>11.7</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>176.7</td><td>0.712</td><td>1.757</td><td>1.009</td><td>1.773</td><td><b>1.773</b></td></tr>
+<tr><td>18</td><td>0.0195</td><td>10.0</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>114.5</td><td>0.531</td><td>0.330</td><td>1.008</td><td>0.332</td><td><b>0.332</b></td></tr>
+<tr><td>18</td><td>0.0195</td><td>10.0</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>138.2</td><td>0.596</td><td>0.447</td><td>1.008</td><td>0.450</td><td><b>0.450</b></td></tr>
+<tr><td>18</td><td>0.0195</td><td>10.0</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>199.0</td><td>0.712</td><td>0.768</td><td>1.008</td><td>0.774</td><td><b>0.774</b></td></tr>
+</table>
+<h2>8. Advertencias y limitaciones</h2><ul>
+<li>El DEM manda: con celda de 12.5 m y cotas enteras las divisorias en terreno plano son inciertas en varias celdas y las pendientes de celda son escalonadas. Valida las cuencas críticas con topografía.</li>
+<li>Las depresiones cerradas se rellenan para que todo drene: el caudal racional no descuenta ese almacenamiento, por lo que en cuencas con muchas depresiones es un límite superior.</li>
+<li>Una cuenca que toca el borde del DEM puede estar incompleta.</li>
+<li>Las fórmulas de Tc son empíricas; fuera de su rango de calibración (marcado con *) son extrapolaciones. En pendientes menores de 1 % Kirpich y California tienden a subestimar Tc (y a sobrestimar Q).</li>
+<li>El método racional supone lluvia uniforme de duración igual a Tc y es apropiado para cuencas pequeñas (el Manual del MTC lo limita a unos 10 km²); para cuencas mayores conviene un hidrograma unitario.</li>
+<li>El escenario con la vía como barrera supone terraplén continuo e impermeable salvo en las alcantarillas indicadas; no modela cunetas ni la capacidad hidráulica de cada obra.</li>
+</ul>
+<h2>9. Texto sugerido para la tesis</h2><div class='cita'>Las cuencas de aporte de las 18 obras de cruce se delimitaron sobre el modelo digital de elevación (celda de 12.5 m) con el complemento QGIS «Exutorios Viales»: el DEM se acondicionó hidrológicamente (relleno de depresiones por Priority-Flood y resolución de planicies de Barnes et al., 2014), se obtuvieron las direcciones y la acumulación de flujo D8, la red de cauces con un umbral de 10.94 ha y las cuencas de cada salida. Para cada cuenca se calcularon el área, el perímetro, la longitud del recorrido más largo, las cotas extremas, las pendientes, los índices de compacidad y de forma, y el tiempo de concentración con las fórmulas de Kirpich, Témez, California Culverts Practice, Bransby-Williams y del retardo del SCS (adoptando media_validas, con un mínimo de 10 min). El caudal de diseño se estimó con el método racional modificado de Témez a partir de la lluvia máxima diaria de 58.5 mm para Tr 25 años; 70.6 mm para Tr 35 años; 101.7 mm para Tr 71 años (Log-Pearson III), convertida a 24 h con el factor 1.13 e intensidad por Dyck-Peschke, con número de curva de la tabla TR-55 (Cultivos en hileras, surcos rectos, condición buena, AMC II). Las áreas resultan entre 0.001 y 0.563 km² y los caudales para Tr = 71 años entre 0.04 y 5.65 m³/s. Los resultados son referenciales y deben validarse con topografía de detalle en el expediente técnico.</div>
+</body></html>

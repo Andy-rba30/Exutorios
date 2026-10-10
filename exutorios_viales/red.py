@@ -490,6 +490,7 @@ def parametros_cuenca(mascara_total, salida, camino, L, zp_orig, relleno, lab_de
         "n_celdas": int(n), "area_m2": float(area_m2), "area_ha": float(area_m2 / 1e4),
         "area_km2": float(area_km2), "perimetro_m": float(P), "perimetro_km": float(P / 1000.0),
         "l_m": float(L), "h_max": h_max, "h_min": h_min, "dh": float(dh),
+        "h_min_zonal": float(z.min()) if z.size else float("nan"),
         "h_media": float(z.mean()) if z.size else float("nan"),
         "s_l": float(dh / L) if L > 0 else float("nan"),
         "s_cuenca": s_cuenca,

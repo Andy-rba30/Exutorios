@@ -65,7 +65,7 @@ escenarios y todos los rásters, en unos 16 s en Python puro.
   y cómo elegirlo; texto de sustento para la tesis.
 - [Plan de diseño y decisiones de algoritmo](docs/PLAN.md).
 - [Validación](docs/VALIDACION.md): pruebas analíticas, corrida sobre el DEM real y comparación con
-  el procedimiento de GRASS.
+  las dos cuencas de GRASS del caso de La Unión (IoU 0.81 y 0.88); `scripts/validar_la_union.py`.
 - [Historial de cambios](CHANGELOG.md).
 
 ## Desarrollo

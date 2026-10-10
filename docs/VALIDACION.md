@@ -74,51 +74,96 @@ Si existe, usar el DEM ALOS PALSAR RT1 original en decimales (no el exportado de
 redondeado al metro) reduce las terrazas y la incertidumbre. La preparación automática lo
 reproyecta y rellena huecos igual.
 
-## 3. Comparación con el procedimiento de GRASS
+## 3. Comparación con el procedimiento de GRASS (caso real)
 
-Las dos cuencas de referencia de la tesis:
+Datos en `datos_prueba/la_union/` (DEM de GRASS de 1 637 × 1 569 celdas, cotas enteras de −2 a
+61 m; eje de 4 275.63 m; 17 alcantarillas; polígonos y salidas de GRASS). Script reproducible:
+`python3 scripts/validar_la_union.py [umbral_ha]` (necesita python3-gdal; usa el sustituto de
+PyQGIS). Cada corrida completa (2.6 millones de celdas, 18 salidas, CSV e informe) tarda 20 s.
 
-| | A (km²) | P (km) | L (m) | Hmín–Hmáx | S |
-|---|---|---|---|---|---|
-| Cuenca 1 (GRASS) | 0.554 | 4.435 | 1 230 | 10.29–25.81 | 0.0126 |
-| Cuenca 2 (GRASS) | 0.341 | 3.288 | 1 014 | 9.83–24.32 | 0.0143 |
+Nota: los valores de referencia del encargo (0.554 km², 4.435 km, 1 230 m, cotas 10.29–25.81) no
+salen de estas capas; los valores de GRASS correctos, según el LEEME de los datos, son los de la
+tabla. GRASS corrió con MFD, umbral de 700 celdas (10.94 ha), `r.water.outlet` y `r.lfp`.
 
-Para reproducirlas hacen falta tres cosas que no están en el repositorio: el **eje** (DXF o GPKG),
-los **17 puntos** de alcantarillas y los **polígonos de GRASS** (o al menos las coordenadas de las
-dos salidas). Además, las cotas mínimas de GRASS (10.29 y 9.83 m) están por debajo del mínimo del
-DEM entregado (12 m): el procedimiento de GRASS se corrió sobre otro DEM (probablemente el ALOS
-PALSAR original en decimales), así que la comparación debe hacerse con ese mismo DEM.
+### 3.1 Resultados (umbral 10.94 ha; con 2 ha las dos cuencas son idénticas)
 
-Cómo hacerla cuando estén los archivos (10 min en QGIS):
+| Cuenca | Fuente | Salida | A (ha) | P (km) | L (m) | Hmín salida | Hmín cuenca | Hmáx | S = ΔH/L | IoU |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | GRASS | 2+070 | 63.66 | 5.175 | 1 565.9 | – | 22 | 37 | 0.00958 | – |
+| 1 | Exutorios | 2+140 (cruce) | 56.27 | 5.075 | 1 914.4 | 25 | 22 | 37 | 0.00627 | 0.81 |
+| 2 | GRASS | 1+100 | 34.67 | 4.150 | 1 261.0 | – | 20 | 36 | 0.01269 | – |
+| 2 | Exutorios | 1+109 (punto+cruce) | 33.09 | 3.575 | 1 219.1 | 22 | 20 | 35 | 0.01066 | 0.88 |
 
-1. Ejecutar «Cuencas de alcantarillas (análisis rápido)» con el DEM de GRASS, el eje y los 17
-   puntos; en avanzados, umbral 10.94 ha (para igualar `r.watershed`).
-2. En la capa de salidas, localizar las dos salidas por progresiva y leer en la capa de cuencas
-   `area_km2`, `perim_km`, `l_m`, `h_min`, `h_max`, `s_l`.
-3. Pegar los valores en esta tabla y en el informe.
+IoU = intersección / unión de los polígonos. Con la salida de GRASS de la cuenca 1 ajustada a
+25 m (2+085) el complemento delimita solo 2.5 ha: ese punto cae sobre un afluente, no sobre el
+cauce principal, que en el flujo D8 del complemento cruza el eje 70 m más adelante (2+140).
 
-Diferencias esperables y cuál resultado es más confiable:
+### 3.2 Lectura
 
-- **Área.** GRASS `r.watershed` usa MFD (flujo múltiple) para la acumulación y `r.water.outlet`
-  D8 para la cuenca; las divisorias en planicies dependen de cómo cada programa resuelve las zonas
-  planas (GRASS usa una búsqueda de menor costo sin rellenar). Con relleno + Barnes la divisoria
-  sigue la cota de rebose real de cada depresión, que es donde físicamente se reparte el agua
-  cuando las depresiones se llenan. Diferencias del 5–15 % en cuencas de 0.3–0.6 km² son normales;
-  mayores indican una depresión grande cerca de la divisoria (ver `n_dep`, `vol_dep`). En ese caso
-  el valor del complemento es el conservador (cuenca con todo lo que vierte al llenarse) y además
-  el informe lo señala.
-- **Perímetro y Kc.** Ambos miden el polígono ráster escalonado; deben coincidir si la cuenca
-  coincide. Los píxeles sueltos e islas de GRASS (eliminados a mano) aquí no existen: el polígono
-  es la parte conectada que contiene la salida.
-- **L.** `r.lfp` y el complemento miden la misma magnitud (distancia de flujo D8 máxima con pasos
-  diagonales de √2); la diferencia solo puede venir de la cuenca o del acondicionamiento.
-- **Cotas.** Hmín aquí es la cota del DEM en la celda de salida; en GRASS la estadística de zona
-  toma el mínimo de la cuenca, que puede estar en una depresión y no en la salida. El complemento
-  usa la salida porque ΔH/L se refiere al recorrido.
-- **Pendiente.** `s_l` = ΔH/L coincide en definición con la de GRASS; se añade `s_1085`, más
-  representativa en terreno plano.
-- **Confiabilidad.** Dado el mismo DEM, el resultado del complemento es más trazable: una sola
-  corrida reproducible, sin pasos manuales, con verificación de celdas sin salida, cuencas sin islas
-  y avisos de borde y depresiones. Pero la fuente dominante de incertidumbre no es el programa sino
-  el DEM: con cotas enteras, las cuencas menores de 10 ha son inciertas en un factor 2 (§2.1), y
-  ningún procedimiento ráster puede mejorarlas sin topografía.
+- **Cuenca 2 (1+100):** coincidencia muy buena. Área −5 %, L −3 %, mismas cotas mínima de cuenca
+  (20) y máxima (36 → 35 por el píxel de la divisoria). IoU 0.88. Las diferencias son del orden de
+  una o dos celdas en la divisoria, lo esperable entre MFD + búsqueda de menor costo (GRASS) y
+  relleno + Barnes (complemento).
+- **Cuenca 1 (2+070):** coincidencia buena en el cuerpo de la cuenca (IoU 0.81, Hmáx y Hmín de
+  cuenca iguales) pero el área es 12 % menor y L 22 % mayor. Dos causas: (a) el cauce principal
+  corre casi paralelo al eje cerca del cruce y cada programa lo corta en un punto distinto (GRASS
+  en 2+070, el complemento en 2+140), con lo que una franja de la cuenca cambia de lado; (b) el
+  recorrido más largo del complemento entra por una cola de la cuenca con pendiente casi nula
+  (S 10–85 = 0.0009) que GRASS no incluye. El Tc resultante (68 min) es mayor que el que daría la L
+  de GRASS, es decir, el caudal del complemento (5.65 m³/s para Tr 71) es algo menor que el que se
+  obtendría con los datos de GRASS y casi igual al del diseño actual en 2+070 (5.12 m³/s).
+- **Hmín.** El complemento da dos valores: en la salida (`h_min`, para ΔH/L) y mínimo de la cuenca
+  (`h_min_z`, el de la estadística de zona de GRASS, que cae en una depresión). GRASS usó el
+  segundo para la pendiente; por eso su S es mayor. Para Tc lo correcto es el desnivel del recorrido.
+- **Perímetro.** Ambos miden el polígono ráster; difieren con el área y la forma, no por método.
+
+### 3.3 Cuál resultado es más confiable y por qué
+
+Para la cuenca 2 ambos son equivalentes; para la cuenca 1 la discrepancia no es de programa sino
+de dato: en un DEM de cotas enteras con pendientes de 0.6 a 1 %, la posición exacta donde un
+cauce casi paralelo al eje lo cruza es incierta en decenas de metros, y con ella el reparto de
+una franja de la cuenca. El complemento tiene a su favor que (1) el procedimiento es único,
+reproducible y verificado (celdas sin salida = 0, polígono sin islas, L medida con la misma
+definición que `r.lfp`), (2) reporta las señales de alerta (28 % y 18 % del área en depresiones
+cerradas: el caudal racional es un límite superior) y (3) permite comprobar el punto de cruce con
+la capa de cauces y de recorridos. La recomendación para la tesis: adoptar el complemento como
+procedimiento, reportar la cuenca de GRASS como contraste, y para la obra de 2+070 verificar en
+campo o con la topografía del proyecto si el cauce cruza en 2+070 o en 2+140 (70 m), porque de
+ello depende un 12 % del área.
+
+### 3.4 Las 17 alcantarillas (umbral 10.94 ha, cuenca natural, suelos grupo C por defecto)
+
+| n | Progresiva | Tipo | A (ha) | L (m) | Tc (min) | Q Tr 35 | Q Tr 71 | Q del diseño |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 0+080 | Alivio | 1.73 | 259 | 13.0 | 0.33 | 0.57 | 0.08 (Tr 35) |
+| 2 | 0+320 | Igualación | 2.02 | 422 | 18.9 | 0.29 | 0.50 | 1.92 (Tr 71) |
+| 3 | 0+690 | Alivio | 1.05 | 176 | 10.0 | 0.24 | 0.42 | 0.11 (Tr 35) |
+| 4 | 0+840 | Alivio | 0.12 | 68 | 10.0 | 0.03 | 0.05 | 0.08 (Tr 35) |
+| 5 | 1+100 | Igualación | 33.09 | 1 219 | 41.5 | 2.72 | 4.67 | 2.15 (Tr 71) |
+| 6 | 1+490 | Alivio | 4.97 | 314 | 12.7 | 0.96 | 1.65 | 0.16 (Tr 35) |
+| 7 | 1+680 | Obligatoria | 2.11 | 281 | 10.4 | 0.47 | 0.81 | 1.17 (Tr 71) |
+| 8 | 2+070 | Igualación | 2.48 | 377 | 12.7 | 0.48 | 0.83 | 5.12 (Tr 71) |
+| – | 2+140 | cruce automático | 56.27 | 1 914 | 68.2 | 3.28 | 5.65 | – |
+| 9 | 2+320 | Alivio | 0.09 | 53 | 10.0 | 0.02 | 0.04 | 0.16 (Tr 35) |
+| 10 | 2+500 | Obligatoria | 1.52 | 266 | 12.3 | 0.30 | 0.52 | 0.60 (Tr 71) |
+| 11 | 2+940 | Alivio | 13.62 | 782 | 35.1 | 1.26 | 2.16 | 0.21 (Tr 35) |
+| 12 | 3+150 | Igualación | 3.19 | 377 | 16.5 | 0.51 | 0.87 | 2.21 (Tr 71) |
+| 13 | 3+480 | Alivio | 0.80 | 153 | 10.0 | 0.18 | 0.32 | 0.17 (Tr 35) |
+| 14 | 3+660 | Obligatoria | 5.03 | 467 | 19.4 | 0.71 | 1.23 | 1.35 (Tr 71) |
+| 15 | 3+760 | Obligatoria | 10.39 | 645 | 24.0 | 1.26 | 2.17 | 1.33 (Tr 71) |
+| 16 | 3+920 | Obligatoria | 5.03 | 364 | 11.7 | 1.03 | 1.77 | 0.47 (Tr 71) |
+| 17 | 4+080 | Obligatoria | 1.95 | 181 | 10.0 | 0.45 | 0.77 | 0.47 (Tr 71) |
+
+Observaciones para el diseño (no son conclusiones del complemento, sino lo que el DEM muestra):
+
+- La obra de **2+070** recibe en el DEM solo 2.5 ha; el cauce de 56 ha cruza en **2+140**. O la
+  obra se desplaza, o se confirma en campo que es el mismo cauce.
+- **2+940 (alivio)** drena 13.6 ha y **1+490 (alivio)** 5 ha en el DEM: más que una faja de
+  bordillo. Conviene revisarlas como obras de cruce.
+- Las de alivio restantes drenan menos de 2 ha, coherente con su función.
+- Las cuencas de **0+320** y **3+150** (igualación) son pequeñas en el DEM (2 y 3 ha) frente a los
+  caudales del diseño (1.9 y 2.2 m³/s): el diseño considera el volumen represado en la depresión,
+  que el método racional no ve. Para ellas vale el análisis de «Cota de Anegamiento».
+- Los caudales del complemento usan grupo hidrológico C por defecto; con las calicatas (A/B/D/C/A)
+  cambiarán. Las progresivas de los puntos difieren ±10 m de las nominales por el ajuste a la
+  celda de mayor acumulación.

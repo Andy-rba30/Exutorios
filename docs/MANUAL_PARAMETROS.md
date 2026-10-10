@@ -129,7 +129,8 @@ el umbral de cauce.
   polígono de `r.water.outlet`; sobrestima el perímetro real y por tanto Kc.
 - `l_m`: recorrido más largo exacto: máxima distancia de flujo D8 (pasos ortogonales = celda,
   diagonales = celda·√2) desde cualquier celda hasta la salida. Equivale a `r.lfp`.
-- `h_max`, `h_min` (cota en la salida), `dh`, `s_l` = ΔH/L, `s_1085`: pendiente entre el 10 % y el
+- `h_max`, `h_min` (cota en la salida), `h_min_z` (cota mínima de toda la cuenca, como la estadística
+  de zona de GRASS; suele caer en una depresión), `dh` = Hmáx − Hmín en la salida, `s_l` = ΔH/L, `s_1085`: pendiente entre el 10 % y el
   85 % del recorrido (Gray, 1961; USGS), `s_cuenca`: pendiente media de la cuenca con el operador
   de Horn sobre el DEM original, `h_media`, `kc` = 0.28·P/√A (Gravelius), `kf` = A/L² (Horton).
 - `n_dep`, `vol_dep`, `frac_dep`: depresiones cerradas del DEM original dentro de la cuenca

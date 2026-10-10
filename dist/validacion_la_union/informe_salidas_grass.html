@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='utf-8'>
+<title>Cuencas de alcantarillas</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:24px auto;max-width:1200px;color:#1f2933;line-height:1.45;padding:0 16px}
+h1{font-size:24px;margin-bottom:4px}h2{font-size:18px;margin-top:28px;border-bottom:2px solid #d9e2ec;padding-bottom:4px}
+h3{font-size:15px;margin-top:18px}
+.sub{color:#52606d;margin-top:0}
+table{border-collapse:collapse;width:100%;margin:8px 0 16px;font-size:12.5px}
+th,td{border:1px solid #d9e2ec;padding:3px 5px;text-align:right}th{background:#f0f4f8;text-align:center}
+td.t{text-align:left}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.kpi{border:1px solid #d9e2ec;border-radius:6px;padding:10px 14px;min-width:160px;flex:1}
+.kpi b{display:block;font-size:22px;color:#102a43}.kpi span{font-size:12px;color:#52606d}
+.aviso{background:#fff8e1;border-left:4px solid #f0b429;padding:8px 12px;margin:10px 0}
+.malo{background:#fdecea;border-left:4px solid #d64545;padding:8px 12px;margin:10px 0}
+.ok{background:#e3f9e5;border-left:4px solid #3ebd93;padding:8px 12px;margin:10px 0}
+.cita{background:#f0f4f8;padding:12px;border-radius:6px;font-size:14px}
+.fuera{color:#b54708}
+small{color:#52606d}
+</style></head><body>
+<h1>Cuencas de aporte de alcantarillas – informe de cálculo</h1>
+<p class='sub'>Generado el 10/10/2026 03:52 con el complemento QGIS «Exutorios Viales». Resultado referencial para estudios a nivel de perfil.</p>
+<h2>1. Resumen</h2>
+<div class='kpis'>
+<div class='kpi'><b>2</b><span>Salidas analizadas (cruces + puntos)</span></div>
+<div class='kpi'><b>0.365 km²</b><span>Cuenca mayor (salida 1, 1+123)</span></div>
+<div class='kpi'><b>4.86 m³/s</b><span>Caudal máximo Tr 71 años (salida 1, cuenca natural)</span></div>
+<div class='kpi'><b>0</b><span>Cuencas que tocan el borde del DEM</span></div>
+</div>
+<div class='aviso'>Salida 1 (1+123): 28.1 % del área está en depresiones cerradas (7, 190000 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<div class='aviso'>Salida 2 (2+085): 15.6 % del área está en depresiones cerradas (1, 7500 m³). El método racional no considera ese almacenamiento: el caudal es un límite superior.</div>
+<h2>2. Datos de entrada</h2><table>
+<tr><td class='t'><b>DEM</b></td><td class='t'>dem_grass_area_estudio</td></tr>
+<tr><td class='t'><b>Preparación automática del DEM</b></td><td class='t'>ninguna (se usó tal cual)</td></tr>
+<tr><td class='t'><b>Celda / filas × columnas</b></td><td class='t'>12.50 m / 1569 × 1637</td></tr>
+<tr><td class='t'><b>Sistema de coordenadas</b></td><td class='t'>EPSG:32717</td></tr>
+<tr><td class='t'><b>Cotas</b></td><td class='t'>enteras (resolución vertical 1 m)</td></tr>
+<tr><td class='t'><b>Eje de la vía</b></td><td class='t'>eje_via.gpkg (1 parte(s), 4276 m)</td></tr>
+<tr><td class='t'><b>Alcantarillas dadas</b></td><td class='t'>2 puntos</td></tr>
+<tr><td class='t'><b>Modo de salidas</b></td><td class='t'>Solo los puntos dados</td></tr>
+<tr><td class='t'><b>Umbral de cauce</b></td><td class='t'>10.94 ha = 700 celdas</td></tr>
+<tr><td class='t'><b>Tratamiento de depresiones</b></td><td class='t'>Rellenar (Priority-Flood, recomendado en terreno plano)</td></tr>
+<tr><td class='t'><b>Vía como barrera</b></td><td class='t'>no</td></tr>
+<tr><td class='t'><b>Ajuste de puntos / fusión / agrupación de cortes</b></td><td class='t'>25 m / 30 m / 40 m</td></tr>
+<tr><td class='t'><b>Lluvia máxima diaria</b></td><td class='t'>Tr 25: 58.5 mm; Tr 35: 70.6 mm; Tr 71: 101.7 mm</td></tr>
+<tr><td class='t'><b>Lluvia de 24 h</b></td><td class='t'>diaria × 1.13</td></tr>
+<tr><td class='t'><b>Intensidad</b></td><td class='t'>Dyck-Peschke a partir de la lluvia de 24 h (sin IDF)</td></tr>
+<tr><td class='t'><b>Uso del suelo (CN)</b></td><td class='t'>Cultivos en hileras, surcos rectos, condición buena</td></tr>
+<tr><td class='t'><b>Suelos</b></td><td class='t'>grupo C por defecto</td></tr>
+<tr><td class='t'><b>Condición de humedad</b></td><td class='t'>AMC II</td></tr>
+<tr><td class='t'><b>Tc mínimo / criterio</b></td><td class='t'>10 min / media_validas</td></tr>
+<tr><td class='t'><b>Caudal adoptado</b></td><td class='t'>racional modificado de Témez</td></tr>
+</table>
+<h2>3. Método</h2><ol>
+<li>Acondicionamiento del DEM: relleno de depresiones con Priority-Flood (Barnes et al., 2014); zonas planas resueltas con el gradiente superpuesto de Barnes, Lehman y Mulla (2014). Verificación: 0 celdas sin salida.</li>
+<li>Direcciones D8 de máxima pendiente (O&#x27;Callaghan y Mark, 1984) y acumulación de flujo; red de cauces con umbral de 10.94 ha (700 celdas), segmentos de confluencia a confluencia con orden de Strahler (1951 segmentos).</li>
+<li>Salidas: Solo los puntos dados. Los cruces se obtienen por intersección geométrica exacta de cada segmento de cauce con el eje; los puntos dados se ajustan a la celda de mayor acumulación en 25 m. Progresivas medidas sobre el eje concatenando sus partes.</li>
+<li>Cuenca de cada salida: todas las celdas cuyo camino D8 pasa por ella (incluye las cuencas anidadas aguas arriba). Polígono sin islas. L = máxima distancia de flujo hasta la salida (pasos diagonales √2·celda).</li>
+<li>Parámetros: A, P (del polígono ráster), L, Hmáx, Hmín en la salida, ΔH, S = ΔH/L, pendiente 10–85 del recorrido, pendiente media de la cuenca (Horn), cota media, Kc = 0.28·P/√A, Kf = A/L², depresiones cerradas (relleno − terreno) y contacto con el borde del DEM.</li>
+<li>Tc: Kirpich (1940), Témez (1978), California Culverts Practice (1942), Bransby-Williams (1922) y retardo SCS (NRCS NEH-630 cap. 15), con sus rangos de calibración; Tc mínimo 10 min; adoptado: media_validas.</li>
+<li>CN de la tabla TR-55 (USDA-NRCS, 1986) por uso y grupo hidrológico, compuesto por área; condición AMC II (Chow et al., 1988).</li>
+<li>Lluvia de 24 h = diaria × 1.13 (Hershfield, 1961). Intensidad: Dyck-Peschke, P_d = P24·(d/1440)^0.25.</li>
+<li>Caudal: racional Q = C·I·A/3.6 y racional modificado de Témez Q = C·I·A·K/3.6 con C = (Pd−Po)(Pd+23Po)/(Pd+11Po)², Po = 5080/CN − 50.8 y K = 1 + Tc^1.25/(Tc^1.25+14) (Témez, 1991).</li>
+</ol>
+<h2>4. Salidas (exutorios)</h2>
+<table><tr><th>Id</th><th>Progresiva</th><th>Origen</th><th>Desplazamiento (m)</th><th>Área drenada (ha)</th><th>Cota (msnm)</th><th>Anidada en</th><th>Contiene</th></tr>
+<tr><td>1</td><td>1+123</td><td class='t'>punto</td><td>21.3</td><td>36.5</td><td>24.00</td><td>-</td><td class='t'>-</td></tr>
+<tr><td>2</td><td>2+085</td><td class='t'>punto</td><td>24.8</td><td>2.5</td><td>23.00</td><td>-</td><td class='t'>-</td></tr>
+</table>
+<h2>5. Parámetros geomorfológicos</h2>
+<table><tr><th>Id</th><th>A (km²)</th><th>P (km)</th><th>L (m)</th><th>Hmáx</th><th>Hmín</th><th>ΔH (m)</th><th>S = ΔH/L</th><th>S 10–85</th><th>S cuenca</th><th>H media</th><th>Kc</th><th>Kf</th><th>Depresiones</th><th>Vol. dep. (m³)</th><th>% área dep.</th><th>Borde</th></tr>
+<tr><td>1</td><td>0.3648</td><td>4.150</td><td>1 299</td><td>35.00</td><td>24.00</td><td>11.00</td><td>0.0085</td><td>0.0087</td><td>0.0577</td><td>27.11</td><td>1.92</td><td>0.216</td><td>7</td><td>190 000</td><td>28.1</td><td>No</td></tr>
+<tr><td>2</td><td>0.0250</td><td>1.050</td><td>389</td><td>35.00</td><td>23.00</td><td>12.00</td><td>0.0308</td><td>0.0356</td><td>0.0458</td><td>27.82</td><td>1.86</td><td>0.165</td><td>1</td><td>7 500</td><td>15.6</td><td>No</td></tr>
+</table>
+<h2>6. Tiempo de concentración (min)</h2>
+<table><tr><th>Id</th><th>Kirpich</th><th>Témez</th><th>California Culverts Practice</th><th>Bransby-Williams</th><th>Retardo SCS</th><th>Adoptado</th><th>Criterio</th></tr>
+<tr><td>1</td>
+<td><span class='fuera' title='pendiente fuera de 3–10 %'>30.6*</span></td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>54.4*</span></td>
+<td><span class='fuera' title='pendiente fuera de 3–10 % (igual que Kirpich)'>30.6*</span></td>
+<td>54.5</td>
+<td>35.8</td>
+<td><b>45.1</b></td><td class='t'>media de Bransby-Williams, Retardo SCS</td></tr>
+<tr><td>2</td>
+<td>7.4</td>
+<td><span class='fuera' title='área menor de 1 km² (extrapolación)'>17.0*</span></td>
+<td>7.4</td>
+<td>16.5</td>
+<td>15.3</td>
+<td><b>12.9</b></td><td class='t'>media de Bransby-Williams, California Culverts Practice, Kirpich, Retardo SCS</td></tr>
+</table>
+<p><small>* Fuera del rango de calibración de la fórmula (pasa el ratón para ver el motivo). Tc mínimo aplicado: 10 min.</small></p>
+<h2>7. Lluvia, escorrentía y caudal de diseño</h2>
+<p>Lluvia máxima diaria por periodo de retorno (Log-Pearson III): Tr 25 años: 58.5 mm; Tr 35 años: 70.6 mm; Tr 71 años: 101.7 mm. Lluvia de 24 h = diaria × 1.13.</p>
+<p>Intensidad para una duración igual al Tc adoptado: Dyck-Peschke, I = P24·(Tc/1440)^0.25 / (Tc/60).</p>
+<p>C de Témez con Po = 5080/CN − 50.8 (equivalente a Ia = 0.2·S); K = 1 + Tc^1.25/(Tc^1.25+14). Caudal adoptado: racional modificado de Témez.</p>
+<p></p>
+<table><tr><th>Id</th><th>A (km²)</th><th>Tc (min)</th><th>CN</th><th>Tr (años)</th><th>Pd (mm)</th><th>P24 (mm)</th><th>I (mm/h)</th><th>C Témez</th><th>Q racional (m³/s)</th><th>K</th><th>Q Témez (m³/s)</th><th>Q adoptado</th></tr>
+<tr><td>1</td><td>0.3648</td><td>45.1</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>37.0</td><td>0.531</td><td>1.991</td><td>1.048</td><td>2.085</td><td><b>2.085</b></td></tr>
+<tr><td>1</td><td>0.3648</td><td>45.1</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>44.6</td><td>0.596</td><td>2.695</td><td>1.048</td><td>2.823</td><td><b>2.823</b></td></tr>
+<tr><td>1</td><td>0.3648</td><td>45.1</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>64.3</td><td>0.712</td><td>4.636</td><td>1.048</td><td>4.857</td><td><b>4.857</b></td></tr>
+<tr><td>2</td><td>0.0250</td><td>12.9</td><td>85.0</td><td>25</td><td>58.5</td><td>66.1</td><td>94.3</td><td>0.531</td><td>0.348</td><td>1.010</td><td>0.352</td><td><b>0.352</b></td></tr>
+<tr><td>2</td><td>0.0250</td><td>12.9</td><td>85.0</td><td>35</td><td>70.6</td><td>79.8</td><td>113.8</td><td>0.596</td><td>0.471</td><td>1.010</td><td>0.476</td><td><b>0.476</b></td></tr>
+<tr><td>2</td><td>0.0250</td><td>12.9</td><td>85.0</td><td>71</td><td>101.7</td><td>114.9</td><td>164.0</td><td>0.712</td><td>0.810</td><td>1.010</td><td>0.819</td><td><b>0.819</b></td></tr>
+</table>
+<h2>8. Advertencias y limitaciones</h2><ul>
+<li>El DEM manda: con celda de 12.5 m y cotas enteras las divisorias en terreno plano son inciertas en varias celdas y las pendientes de celda son escalonadas. Valida las cuencas críticas con topografía.</li>
+<li>Las depresiones cerradas se rellenan para que todo drene: el caudal racional no descuenta ese almacenamiento, por lo que en cuencas con muchas depresiones es un límite superior.</li>
+<li>Una cuenca que toca el borde del DEM puede estar incompleta.</li>
+<li>Las fórmulas de Tc son empíricas; fuera de su rango de calibración (marcado con *) son extrapolaciones. En pendientes menores de 1 % Kirpich y California tienden a subestimar Tc (y a sobrestimar Q).</li>
+<li>El método racional supone lluvia uniforme de duración igual a Tc y es apropiado para cuencas pequeñas (el Manual del MTC lo limita a unos 10 km²); para cuencas mayores conviene un hidrograma unitario.</li>
+<li>El escenario con la vía como barrera supone terraplén continuo e impermeable salvo en las alcantarillas indicadas; no modela cunetas ni la capacidad hidráulica de cada obra.</li>
+</ul>
+<h2>9. Texto sugerido para la tesis</h2><div class='cita'>Las cuencas de aporte de las 2 obras de cruce se delimitaron sobre el modelo digital de elevación (celda de 12.5 m) con el complemento QGIS «Exutorios Viales»: el DEM se acondicionó hidrológicamente (relleno de depresiones por Priority-Flood y resolución de planicies de Barnes et al., 2014), se obtuvieron las direcciones y la acumulación de flujo D8, la red de cauces con un umbral de 10.94 ha y las cuencas de cada salida. Para cada cuenca se calcularon el área, el perímetro, la longitud del recorrido más largo, las cotas extremas, las pendientes, los índices de compacidad y de forma, y el tiempo de concentración con las fórmulas de Kirpich, Témez, California Culverts Practice, Bransby-Williams y del retardo del SCS (adoptando media_validas, con un mínimo de 10 min). El caudal de diseño se estimó con el método racional modificado de Témez a partir de la lluvia máxima diaria de 58.5 mm para Tr 25 años; 70.6 mm para Tr 35 años; 101.7 mm para Tr 71 años (Log-Pearson III), convertida a 24 h con el factor 1.13 e intensidad por Dyck-Peschke, con número de curva de la tabla TR-55 (Cultivos en hileras, surcos rectos, condición buena, AMC II). Las áreas resultan entre 0.025 y 0.365 km² y los caudales para Tr = 71 años entre 0.82 y 4.86 m³/s. Los resultados son referenciales y deben validarse con topografía de detalle en el expediente técnico.</div>
+</body></html>
