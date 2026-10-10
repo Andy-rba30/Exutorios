@@ -1,6 +1,9 @@
 # Plan de diseño: complemento QGIS «Exutorios Viales» (cuencas de alcantarillas)
 
-Documento corto de decisiones, previo a la programación. Pendiente de visto bueno.
+Documento corto de decisiones, previo a la programación (aprobado; implementado en la versión 1.0.0).
+Cambio respecto al plan: la máscara de planicies de Barnes se calcula con distancias octiles y se
+desempata por la pendiente del terreno suavizado, porque las distancias «de tablero» del método
+original sesgaban el flujo 45° en las terrazas de los DEM de cotas enteras (ver docs/VALIDACION.md).
 
 ## 1. Estructura (calcada de «Cota de Anegamiento»)
 

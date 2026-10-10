@@ -1,0 +1,16 @@
+Complemento QGIS "Exutorios Viales" v1.0.0
+
+Instalación: QGIS > Complementos > Administrar e instalar complementos >
+Instalar a partir de ZIP > elegir exutorios_viales.zip > Instalar complemento.
+
+Uso rápido: pulsa el ícono de la barra de herramientas, elige el DEM y el
+eje de la vía y ejecuta. Opcional: puntos de las alcantarillas, capa de
+suelos, vía como barrera. Lo demás viene con valores por defecto y se
+ajusta en "Parámetros avanzados".
+
+Análisis completo: menú Complementos > Exutorios Viales > Análisis
+completo, o Procesos > Caja de herramientas > Exutorios Viales >
+Hidrología vial.
+
+El manual de parámetros está en MANUAL_PARAMETROS.md (dentro del ZIP y en
+docs/ del repositorio) y en el menú del complemento.

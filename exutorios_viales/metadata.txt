@@ -1,0 +1,20 @@
+[general]
+name=Exutorios Viales
+qgisMinimumVersion=3.16
+description=Delimita la cuenca de aporte de cada alcantarilla o cruce cauce–vía y calcula sus parámetros geomorfológicos, el tiempo de concentración y el caudal de diseño. Solo numpy y GDAL.
+about=Un solo algoritmo de Procesos reemplaza el flujo manual de GRASS (r.watershed, r.water.outlet, r.lfp): acondiciona el DEM (Priority-Flood o breaching, planicies de Barnes 2014), calcula direcciones y acumulación D8, vectoriza la red de cauces con orden de Strahler, obtiene las salidas por intersección exacta cauce–eje o desde los puntos de las alcantarillas (ajustados a la celda de mayor acumulación), delimita cuencas sin islas con anidamiento, mide el recorrido más largo exacto y entrega A, P, L, cotas, pendientes (ΔH/L, 10–85, media), Kc, Kf, depresiones cerradas y contacto con el borde del DEM. Tc por Kirpich, Témez, California Culverts Practice, Bransby-Williams y retardo SCS con aviso de fuera de rango; caudal racional y racional modificado de Témez por periodo de retorno (Dyck-Peschke o IDF de Hydrognomon), CN de la tabla TR-55 con suelos por calicatas (Thiessen) o polígonos. Opción de la vía como barrera. Salidas con simbología, CSV e informe HTML.
+version=1.0.0
+author=Jose Ospina
+license=GPL-2.0-or-later
+tags=hidrología,drenaje,cuencas,alcantarillas,DEM,D8,tiempo de concentración,caudal,vías
+category=Analysis
+homepage=https://github.com/Andy-rba30/Exutorios
+tracker=https://github.com/Andy-rba30/Exutorios/issues
+repository=https://github.com/Andy-rba30/Exutorios
+experimental=False
+deprecated=False
+hasProcessingProvider=yes
+icon=icon.png
+supportsQt6=True
+changelog=1.0.0
+  - Versión inicial.
